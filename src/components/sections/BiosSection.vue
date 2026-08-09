@@ -1,13 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import SectionHeader from '@/components/SectionHeader.vue'
+</script>
 
 <template>
   <section id="family" class="section section--alt">
     <div class="container">
-      <div class="section-header">
-        <p class="eyebrow">Meet the Family</p>
-        <h2>The people behind the farm</h2>
+      <SectionHeader eyebrow="Meet the Family" title="The people behind the farm">
         <p>A husband-and-wife team doing this one chore, one season, at a time.</p>
-      </div>
+      </SectionHeader>
 
       <div class="mx-auto max-w-3xl text-center">
         <div class="rounded-card shadow-md mb-8 overflow-hidden">

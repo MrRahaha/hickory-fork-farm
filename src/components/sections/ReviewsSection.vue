@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import SectionHeader from '@/components/SectionHeader.vue'
+import ReviewCard from './ReviewCard.vue'
+
 interface Review {
   quote: string
   name: string
@@ -30,26 +33,12 @@ const reviews: Review[] = [
 <template>
   <section id="reviews" class="section">
     <div class="container">
-      <div class="section-header">
-        <p class="eyebrow">Reviews</p>
-        <h2>What our neighbors say</h2>
+      <SectionHeader eyebrow="Reviews" title="What our neighbors say">
         <p>A few kind words from the folks we're lucky enough to feed.</p>
-      </div>
+      </SectionHeader>
 
       <div class="grid grid-cols-1 gap-7 lg:grid-cols-3">
-        <figure
-          v-for="review in reviews"
-          :key="review.name"
-          class="bg-bg-alt border-border rounded-card flex flex-col gap-6 border p-8"
-        >
-          <blockquote class="text-text flex-1 text-base">
-            &ldquo;{{ review.quote }}&rdquo;
-          </blockquote>
-          <figcaption class="flex flex-col text-sm">
-            <span class="text-primary-dark font-bold">{{ review.name }}</span>
-            <span class="text-text-muted">{{ review.detail }}</span>
-          </figcaption>
-        </figure>
+        <ReviewCard v-for="review in reviews" :key="review.name" v-bind="review" />
       </div>
     </div>
   </section>
