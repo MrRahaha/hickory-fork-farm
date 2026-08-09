@@ -50,33 +50,52 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a href="#top" class="brand" @click="closeMenu">
-        <img :src="logoMark" alt="" class="brand__mark" width="48" height="48" />
-        <span class="brand__name">The Farm on Hickory Fork</span>
+  <header class="bg-bg/92 border-border sticky top-0 z-50 border-b backdrop-blur-[8px]">
+    <div class="container flex h-18 items-center justify-between">
+      <a
+        href="#top"
+        class="text-text flex items-center gap-[0.7rem] no-underline"
+        @click="closeMenu"
+      >
+        <img
+          :src="logoMark"
+          alt=""
+          class="h-12 w-12 shrink-0 object-contain max-[480px]:h-9 max-[480px]:w-9"
+          width="48"
+          height="48"
+        />
+        <span
+          class="text-primary-dark text-[1.05rem] leading-tight font-bold whitespace-nowrap max-[480px]:text-[0.85rem]"
+          >The Farm on Hickory Fork</span
+        >
       </a>
 
       <button
-        class="nav-toggle"
+        class="hidden h-10 w-10 cursor-pointer flex-col justify-center gap-[5px] border-none bg-transparent max-[850px]:flex"
         type="button"
         :aria-expanded="isMenuOpen"
         aria-controls="primary-nav"
         aria-label="Toggle navigation menu"
         @click="toggleMenu"
       >
-        <span class="nav-toggle__bar" />
-        <span class="nav-toggle__bar" />
-        <span class="nav-toggle__bar" />
+        <span class="bg-primary-dark block h-0.5 rounded-sm" />
+        <span class="bg-primary-dark block h-0.5 rounded-sm" />
+        <span class="bg-primary-dark block h-0.5 rounded-sm" />
       </button>
 
-      <nav id="primary-nav" class="nav" :class="{ 'nav--open': isMenuOpen }">
+      <nav
+        id="primary-nav"
+        class="flex items-center gap-7 max-[850px]:absolute max-[850px]:top-[72px] max-[850px]:right-0 max-[850px]:left-0 max-[850px]:max-h-0 max-[850px]:flex-col max-[850px]:items-start max-[850px]:gap-0 max-[850px]:overflow-hidden max-[850px]:border-b max-[850px]:transition-[max-height] max-[850px]:duration-[250ms] max-[850px]:bg-bg-alt max-[850px]:border-border"
+        :class="{ 'max-[850px]:max-h-[400px]': isMenuOpen }"
+      >
         <a
           v-for="link in navLinks"
           :key="link.id"
           :href="`#${link.id}`"
-          class="nav__link"
-          :class="{ 'nav__link--active': activeId === link.id }"
+          class="text-text after:bg-accent relative py-1 text-[0.95rem] font-medium whitespace-nowrap no-underline after:absolute after:right-0 after:-bottom-1 after:left-0 after:h-0.5 after:scale-x-0 after:transition-transform after:duration-200 after:content-[''] hover:after:scale-x-100 max-[850px]:w-full max-[850px]:px-6 max-[850px]:py-[0.9rem] max-[850px]:after:hidden"
+          :class="{
+            'text-primary-dark after:scale-x-100 max-[850px]:bg-primary-tint': activeId === link.id,
+          }"
           @click="closeMenu"
         >
           {{ link.label }}
@@ -85,149 +104,3 @@ onBeforeUnmount(() => {
     </div>
   </header>
 </template>
-
-<style scoped>
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(250, 248, 243, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.site-header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  text-decoration: none;
-  color: var(--color-text);
-}
-
-.brand__mark {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.brand__name {
-  font-weight: 700;
-  font-size: 1.05rem;
-  line-height: 1.2;
-  color: var(--color-primary-dark);
-  white-space: nowrap;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-.nav__link {
-  position: relative;
-  text-decoration: none;
-  color: var(--color-text);
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.25rem 0;
-  white-space: nowrap;
-}
-
-.nav__link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
-  height: 2px;
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-}
-
-.nav__link:hover::after,
-.nav__link--active::after {
-  transform: scaleX(1);
-}
-
-.nav__link--active {
-  color: var(--color-primary-dark);
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.nav-toggle__bar {
-  display: block;
-  height: 2px;
-  background: var(--color-primary-dark);
-  border-radius: 2px;
-}
-
-@media (max-width: 480px) {
-  .brand__name {
-    font-size: 0.85rem;
-  }
-
-  .brand__mark {
-    width: 36px;
-    height: 36px;
-  }
-}
-
-@media (max-width: 850px) {
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav {
-    position: absolute;
-    top: 72px;
-    left: 0;
-    right: 0;
-    background: var(--color-bg-alt);
-    border-bottom: 1px solid var(--color-border);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.25s ease;
-  }
-
-  .nav--open {
-    max-height: 400px;
-  }
-
-  .nav__link {
-    width: 100%;
-    padding: 0.9rem 1.5rem;
-  }
-
-  .nav__link::after {
-    display: none;
-  }
-
-  .nav__link--active {
-    background: var(--color-primary-tint);
-  }
-}
-</style>

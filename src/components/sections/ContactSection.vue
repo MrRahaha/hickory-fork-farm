@@ -57,7 +57,7 @@ const socialLinks: SocialLink[] = [
 </script>
 
 <template>
-  <section id="contact" class="section section--alt contact">
+  <section id="contact" class="section section--alt">
     <div class="container">
       <div class="section-header">
         <p class="eyebrow">Contact</p>
@@ -65,34 +65,39 @@ const socialLinks: SocialLink[] = [
         <p>Reach out about eggs, meat, or lamb &mdash; we'd love to hear from you.</p>
       </div>
 
-      <div class="contact__grid">
+      <div class="mx-auto grid max-w-[960px] grid-cols-1 gap-7 min-[861px]:grid-cols-3">
         <a
           v-for="method in methods"
           :key="method.label"
           :href="method.href"
-          class="contact-card"
+          class="bg-bg border-border rounded-card text-text flex flex-col items-center gap-[0.4rem] border px-6 py-8 text-center no-underline transition hover:-translate-y-[3px] hover:shadow-md"
           target="_blank"
           rel="noopener"
         >
-          <span class="contact-card__icon" aria-hidden="true">{{ method.icon }}</span>
-          <span class="contact-card__label">{{ method.label }}</span>
-          <span class="contact-card__value">{{ method.value }}</span>
+          <span class="mb-[0.4rem] text-[1.75rem]" aria-hidden="true">{{ method.icon }}</span>
+          <span class="text-primary-dark text-[0.95rem] font-bold">{{ method.label }}</span>
+          <span class="text-text-muted text-[0.92rem]">{{ method.value }}</span>
         </a>
       </div>
 
-      <div class="social">
-        <span class="social__label">Find us on</span>
-        <div class="social__links">
+      <div class="mt-12 flex flex-col items-center gap-3">
+        <span class="text-text-muted text-[0.85rem] font-semibold tracking-[0.06em] uppercase">
+          Find us on
+        </span>
+        <div class="flex flex-wrap justify-center gap-3">
           <a
             v-for="social in socialLinks"
             :key="social.label"
             :href="social.href"
-            class="social-link"
+            class="border-border bg-bg text-primary-dark inline-flex items-center gap-2 rounded-full border px-5 py-[0.6rem] text-[0.9rem] font-semibold no-underline transition hover:-translate-y-0.5 hover:shadow-sm"
             target="_blank"
             rel="noopener"
           >
-            <span class="social-link__badge" :style="{ background: social.background }">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
+            <span
+              class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
+              :style="{ background: social.background }"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-3.5 w-3.5">
                 <path :d="social.path" fill="#fff" />
               </svg>
             </span>
@@ -103,117 +108,3 @@ const socialLinks: SocialLink[] = [
     </div>
   </section>
 </template>
-
-<style scoped>
-.contact__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.contact-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.4rem;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem 1.5rem;
-  text-decoration: none;
-  color: var(--color-text);
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.contact-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.contact-card__icon {
-  font-size: 1.75rem;
-  margin-bottom: 0.4rem;
-}
-
-.contact-card__label {
-  font-weight: 700;
-  color: var(--color-primary-dark);
-  font-size: 0.95rem;
-}
-
-.contact-card__value {
-  color: var(--color-text-muted);
-  font-size: 0.92rem;
-}
-
-.social {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 3rem;
-}
-
-.social__label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.social__links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.25rem;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
-  color: var(--color-primary-dark);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.social-link:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-}
-
-.social-link__badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.social-link__badge svg {
-  width: 14px;
-  height: 14px;
-}
-
-@media (max-width: 860px) {
-  .contact__grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

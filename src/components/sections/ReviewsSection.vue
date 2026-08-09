@@ -28,7 +28,7 @@ const reviews: Review[] = [
 </script>
 
 <template>
-  <section id="reviews" class="section reviews">
+  <section id="reviews" class="section">
     <div class="container">
       <div class="section-header">
         <p class="eyebrow">Reviews</p>
@@ -36,60 +36,21 @@ const reviews: Review[] = [
         <p>A few kind words from the folks we're lucky enough to feed.</p>
       </div>
 
-      <div class="reviews__grid">
-        <figure v-for="review in reviews" :key="review.name" class="review-card">
-          <blockquote>&ldquo;{{ review.quote }}&rdquo;</blockquote>
-          <figcaption>
-            <span class="review-card__name">{{ review.name }}</span>
-            <span class="review-card__detail">{{ review.detail }}</span>
+      <div class="grid grid-cols-1 gap-7 min-[861px]:grid-cols-3">
+        <figure
+          v-for="review in reviews"
+          :key="review.name"
+          class="bg-bg-alt border-border rounded-card flex flex-col gap-6 border p-8"
+        >
+          <blockquote class="text-text flex-1 text-[1.02rem]">
+            &ldquo;{{ review.quote }}&rdquo;
+          </blockquote>
+          <figcaption class="flex flex-col text-[0.85rem]">
+            <span class="text-primary-dark font-bold">{{ review.name }}</span>
+            <span class="text-text-muted">{{ review.detail }}</span>
           </figcaption>
         </figure>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.reviews__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
-}
-
-.review-card {
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.review-card blockquote {
-  font-size: 1.02rem;
-  color: var(--color-text);
-  flex: 1;
-}
-
-.review-card figcaption {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.85rem;
-}
-
-.review-card__name {
-  font-weight: 700;
-  color: var(--color-primary-dark);
-}
-
-.review-card__detail {
-  color: var(--color-text-muted);
-}
-
-@media (max-width: 860px) {
-  .reviews__grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

@@ -41,13 +41,13 @@ const offerings: Offering[] = [
 </script>
 
 <template>
-  <section id="products" class="section section--alt products">
+  <section id="products" class="section section--alt">
     <div class="container">
       <div class="section-header">
         <img
           :src="logoFull"
           alt="The Farm on Hickory Fork — Family Owned &amp; Operated, Est. 2020"
-          class="products__logo"
+          class="mx-auto mb-6 h-auto w-[400px]"
           width="663"
           height="592"
         />
@@ -56,158 +56,38 @@ const offerings: Offering[] = [
         <p>Everything we raise is available directly from the farm &mdash; just ask.</p>
       </div>
 
-      <div class="products__grid">
-        <article v-for="item in offerings" :key="item.title" class="product-card">
-          <span class="product-card__icon" aria-hidden="true" v-html="icons[item.icon]"></span>
-          <h3>{{ item.title }}</h3>
-          <p class="product-card__description">{{ item.description }}</p>
-          <ul class="product-card__list">
-            <li v-for="detail in item.details" :key="detail">{{ detail }}</li>
+      <div
+        class="grid grid-cols-1 gap-4 min-[641px]:grid-cols-2 min-[861px]:grid-cols-3 min-[861px]:gap-7"
+      >
+        <article
+          v-for="item in offerings"
+          :key="item.title"
+          class="bg-bg border-border rounded-card border p-6 transition hover:-translate-y-[3px] hover:shadow-md min-[641px]:p-5 min-[861px]:p-8"
+        >
+          <span
+            class="bg-primary-tint text-primary mb-[0.85rem] inline-flex h-10 w-10 items-center justify-center rounded-full [&_svg]:h-5 [&_svg]:w-5 min-[861px]:mb-5 min-[861px]:h-13 min-[861px]:w-13 min-[861px]:[&_svg]:h-[1.6rem] min-[861px]:[&_svg]:w-[1.6rem]"
+            aria-hidden="true"
+            v-html="icons[item.icon]"
+          ></span>
+          <h3 class="mb-[0.35rem] text-[1.05rem] min-[861px]:mb-2 min-[861px]:text-xl">
+            {{ item.title }}
+          </h3>
+          <p
+            class="text-text-muted mb-[0.85rem] text-[0.9rem] min-[641px]:text-[0.85rem] min-[861px]:mb-5 min-[861px]:text-base"
+          >
+            {{ item.description }}
+          </p>
+          <ul class="flex list-none flex-col gap-[0.4rem] min-[861px]:gap-2">
+            <li
+              v-for="detail in item.details"
+              :key="detail"
+              class="text-text before:text-primary relative pl-4 text-[0.85rem] before:absolute before:left-0 before:font-bold before:content-['✓'] min-[641px]:text-[0.78rem] min-[861px]:pl-5 min-[861px]:text-[0.9rem]"
+            >
+              {{ detail }}
+            </li>
           </ul>
         </article>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.products__logo {
-  width: 400px;
-  height: auto;
-  margin: 0 auto 1.5rem;
-}
-
-.products__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
-}
-
-.product-card {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.product-card__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 50%;
-  background: var(--color-primary-tint);
-  color: var(--color-primary);
-  margin-bottom: 1.25rem;
-}
-
-.product-card__icon :deep(svg) {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-.product-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.product-card__description {
-  color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
-}
-
-.product-card__list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.product-card__list li {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  padding-left: 1.25rem;
-  position: relative;
-}
-
-.product-card__list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-  font-weight: 700;
-}
-
-/* Below the grid breakpoint, swap the single full-width column for a
-   compact two-up grid so cards stay a readable width and the layout
-   scales as more products are added. */
-@media (max-width: 860px) {
-  .products__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  .product-card {
-    padding: 1.25rem;
-  }
-
-  .product-card__icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-bottom: 0.85rem;
-  }
-
-  .product-card__icon :deep(svg) {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-
-  .product-card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 0.35rem;
-  }
-
-  .product-card__description {
-    font-size: 0.85rem;
-    margin-bottom: 0.85rem;
-  }
-
-  .product-card__list {
-    gap: 0.4rem;
-  }
-
-  .product-card__list li {
-    font-size: 0.78rem;
-    padding-left: 1rem;
-  }
-}
-
-/* On the smallest screens, two columns get too tight for the icon,
-   title, description, and detail list — drop to a single column. */
-@media (max-width: 640px) {
-  .products__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .product-card {
-    padding: 1.5rem;
-  }
-
-  .product-card__description {
-    font-size: 0.9rem;
-  }
-
-  .product-card__list li {
-    font-size: 0.85rem;
-  }
-}
-</style>

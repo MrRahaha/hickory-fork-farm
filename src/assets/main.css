@@ -1,88 +1,44 @@
 @import './base.css';
 
-.container {
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
+@layer components {
+  .container {
+    @apply mx-auto max-w-[1120px] px-6;
+  }
 
-.section {
-  padding: var(--section-padding-y) 0;
-  scroll-margin-top: 72px;
-}
+  .section {
+    @apply py-14 sm:py-22;
+    scroll-margin-top: 72px;
+  }
 
-.section--alt {
-  background: var(--color-bg-alt);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
+  .section--alt {
+    @apply bg-bg-alt border-border border-t border-b;
+  }
 
-.section-header {
-  max-width: 640px;
-  margin: 0 auto 3rem;
-  text-align: center;
-}
+  .section-header {
+    @apply mx-auto mb-12 max-w-[640px] text-center;
+  }
 
-.eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent-dark);
-  margin-bottom: 0.75rem;
-}
+  .eyebrow {
+    @apply text-accent-dark mb-3 inline-block text-[0.8rem] font-bold tracking-[0.08em] uppercase;
+  }
 
-.section-header h2 {
-  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
-  margin-bottom: 0.75rem;
-}
+  .section-header h2 {
+    @apply mb-3 text-[clamp(1.75rem,1.4rem+1.5vw,2.5rem)];
+  }
 
-.section-header p {
-  color: var(--color-text-muted);
-  font-size: 1.05rem;
-}
+  .section-header p {
+    @apply text-text-muted text-[1.05rem];
+  }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.75rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-transparent px-7 py-[0.85rem] text-[0.95rem] font-semibold no-underline transition hover:-translate-y-px;
+  }
 
-.btn:hover {
-  transform: translateY(-1px);
-}
+  .btn--primary {
+    @apply bg-accent shadow-sm hover:bg-accent-dark text-white;
+  }
 
-.btn--primary {
-  background: var(--color-accent);
-  color: #fff;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn--primary:hover {
-  background: var(--color-accent-dark);
-}
-
-.btn--outline {
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.7);
-  color: inherit;
-}
-
-@media (max-width: 640px) {
-  :root {
-    --section-padding-y: 3.5rem;
+  .btn--outline {
+    @apply border-white/70 bg-transparent text-inherit;
   }
 }
