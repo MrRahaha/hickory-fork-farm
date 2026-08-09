@@ -65,23 +65,23 @@ const socialLinks: SocialLink[] = [
         <p>Reach out about eggs, meat, or lamb &mdash; we'd love to hear from you.</p>
       </div>
 
-      <div class="mx-auto grid max-w-[960px] grid-cols-1 gap-7 min-[861px]:grid-cols-3">
+      <div class="mx-auto grid max-w-5xl grid-cols-1 gap-7 lg:grid-cols-3">
         <a
           v-for="method in methods"
           :key="method.label"
           :href="method.href"
-          class="bg-bg border-border rounded-card text-text flex flex-col items-center gap-[0.4rem] border px-6 py-8 text-center no-underline transition hover:-translate-y-[3px] hover:shadow-md"
+          class="bg-bg border-border rounded-card text-text flex flex-col items-center gap-2 border px-6 py-8 text-center no-underline transition hover:-translate-y-1 hover:shadow-md"
           target="_blank"
           rel="noopener"
         >
-          <span class="mb-[0.4rem] text-[1.75rem]" aria-hidden="true">{{ method.icon }}</span>
-          <span class="text-primary-dark text-[0.95rem] font-bold">{{ method.label }}</span>
-          <span class="text-text-muted text-[0.92rem]">{{ method.value }}</span>
+          <span class="mb-2 text-3xl" aria-hidden="true">{{ method.icon }}</span>
+          <span class="text-primary-dark text-base font-bold">{{ method.label }}</span>
+          <span class="text-text-muted text-sm">{{ method.value }}</span>
         </a>
       </div>
 
       <div class="mt-12 flex flex-col items-center gap-3">
-        <span class="text-text-muted text-[0.85rem] font-semibold tracking-[0.06em] uppercase">
+        <span class="text-text-muted text-sm font-semibold tracking-wider uppercase">
           Find us on
         </span>
         <div class="flex flex-wrap justify-center gap-3">
@@ -89,15 +89,15 @@ const socialLinks: SocialLink[] = [
             v-for="social in socialLinks"
             :key="social.label"
             :href="social.href"
-            class="border-border bg-bg text-primary-dark inline-flex items-center gap-2 rounded-full border px-5 py-[0.6rem] text-[0.9rem] font-semibold no-underline transition hover:-translate-y-0.5 hover:shadow-sm"
+            class="border-border bg-bg text-primary-dark inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold no-underline transition hover:-translate-y-0.5 hover:shadow-sm"
             target="_blank"
             rel="noopener"
           >
             <span
-              class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
+              class="inline-flex size-6 shrink-0 items-center justify-center rounded-full"
               :style="{ background: social.background }"
             >
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-3.5 w-3.5">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-3.5">
                 <path :d="social.path" fill="#fff" />
               </svg>
             </span>

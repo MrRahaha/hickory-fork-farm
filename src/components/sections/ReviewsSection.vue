@@ -36,16 +36,16 @@ const reviews: Review[] = [
         <p>A few kind words from the folks we're lucky enough to feed.</p>
       </div>
 
-      <div class="grid grid-cols-1 gap-7 min-[861px]:grid-cols-3">
+      <div class="grid grid-cols-1 gap-7 lg:grid-cols-3">
         <figure
           v-for="review in reviews"
           :key="review.name"
           class="bg-bg-alt border-border rounded-card flex flex-col gap-6 border p-8"
         >
-          <blockquote class="text-text flex-1 text-[1.02rem]">
+          <blockquote class="text-text flex-1 text-base">
             &ldquo;{{ review.quote }}&rdquo;
           </blockquote>
-          <figcaption class="flex flex-col text-[0.85rem]">
+          <figcaption class="flex flex-col text-sm">
             <span class="text-primary-dark font-bold">{{ review.name }}</span>
             <span class="text-text-muted">{{ review.detail }}</span>
           </figcaption>

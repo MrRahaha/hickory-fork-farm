@@ -50,28 +50,24 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="bg-bg/92 border-border sticky top-0 z-50 border-b backdrop-blur-[8px]">
+  <header class="bg-bg/92 border-border sticky top-0 z-50 border-b backdrop-blur-sm">
     <div class="container flex h-18 items-center justify-between">
-      <a
-        href="#top"
-        class="text-text flex items-center gap-[0.7rem] no-underline"
-        @click="closeMenu"
-      >
+      <a href="#top" class="text-text flex items-center gap-3 no-underline" @click="closeMenu">
         <img
           :src="logoMark"
           alt=""
-          class="h-12 w-12 shrink-0 object-contain max-[480px]:h-9 max-[480px]:w-9"
+          class="size-9 shrink-0 object-contain sm:size-12"
           width="48"
           height="48"
         />
         <span
-          class="text-primary-dark text-[1.05rem] leading-tight font-bold whitespace-nowrap max-[480px]:text-[0.85rem]"
+          class="text-primary-dark text-sm leading-tight font-bold whitespace-nowrap sm:text-base"
           >The Farm on Hickory Fork</span
         >
       </a>
 
       <button
-        class="hidden h-10 w-10 cursor-pointer flex-col justify-center gap-[5px] border-none bg-transparent max-[850px]:flex"
+        class="flex size-10 cursor-pointer flex-col justify-center gap-1 border-none bg-transparent md:hidden"
         type="button"
         :aria-expanded="isMenuOpen"
         aria-controls="primary-nav"
@@ -85,16 +81,17 @@ onBeforeUnmount(() => {
 
       <nav
         id="primary-nav"
-        class="flex items-center gap-7 max-[850px]:absolute max-[850px]:top-[72px] max-[850px]:right-0 max-[850px]:left-0 max-[850px]:max-h-0 max-[850px]:flex-col max-[850px]:items-start max-[850px]:gap-0 max-[850px]:overflow-hidden max-[850px]:border-b max-[850px]:transition-[max-height] max-[850px]:duration-[250ms] max-[850px]:bg-bg-alt max-[850px]:border-border"
-        :class="{ 'max-[850px]:max-h-[400px]': isMenuOpen }"
+        class="border-border bg-bg-alt absolute top-18 right-0 left-0 flex max-h-0 flex-col items-start gap-0 overflow-hidden border-b transition-all duration-300 md:static md:max-h-none md:flex-row md:items-center md:gap-7 md:overflow-visible md:border-b-0 md:bg-transparent"
+        :class="{ 'max-h-96': isMenuOpen }"
       >
         <a
           v-for="link in navLinks"
           :key="link.id"
           :href="`#${link.id}`"
-          class="text-text after:bg-accent relative py-1 text-[0.95rem] font-medium whitespace-nowrap no-underline after:absolute after:right-0 after:-bottom-1 after:left-0 after:h-0.5 after:scale-x-0 after:transition-transform after:duration-200 after:content-[''] hover:after:scale-x-100 max-[850px]:w-full max-[850px]:px-6 max-[850px]:py-[0.9rem] max-[850px]:after:hidden"
+          class="text-text after:bg-accent relative w-full px-6 py-4 text-base font-medium whitespace-nowrap no-underline after:absolute after:right-0 after:-bottom-1 after:left-0 after:hidden after:h-0.5 after:scale-x-0 after:transition-transform after:duration-200 after:content-[''] hover:after:scale-x-100 md:w-auto md:px-0 md:py-1 md:after:block"
           :class="{
-            'text-primary-dark after:scale-x-100 max-[850px]:bg-primary-tint': activeId === link.id,
+            'bg-primary-tint text-primary-dark after:scale-x-100 md:bg-transparent':
+              activeId === link.id,
           }"
           @click="closeMenu"
         >

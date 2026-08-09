@@ -47,7 +47,7 @@ const offerings: Offering[] = [
         <img
           :src="logoFull"
           alt="The Farm on Hickory Fork — Family Owned &amp; Operated, Est. 2020"
-          class="mx-auto mb-6 h-auto w-[400px]"
+          class="mx-auto mb-6 h-auto w-96"
           width="663"
           height="592"
         />
@@ -56,32 +56,28 @@ const offerings: Offering[] = [
         <p>Everything we raise is available directly from the farm &mdash; just ask.</p>
       </div>
 
-      <div
-        class="grid grid-cols-1 gap-4 min-[641px]:grid-cols-2 min-[861px]:grid-cols-3 min-[861px]:gap-7"
-      >
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
         <article
           v-for="item in offerings"
           :key="item.title"
-          class="bg-bg border-border rounded-card border p-6 transition hover:-translate-y-[3px] hover:shadow-md min-[641px]:p-5 min-[861px]:p-8"
+          class="bg-bg border-border rounded-card border p-6 transition hover:-translate-y-1 hover:shadow-md sm:p-5 lg:p-8"
         >
           <span
-            class="bg-primary-tint text-primary mb-[0.85rem] inline-flex h-10 w-10 items-center justify-center rounded-full [&_svg]:h-5 [&_svg]:w-5 min-[861px]:mb-5 min-[861px]:h-13 min-[861px]:w-13 min-[861px]:[&_svg]:h-[1.6rem] min-[861px]:[&_svg]:w-[1.6rem]"
+            class="bg-primary-tint text-primary mb-3 inline-flex size-10 items-center justify-center rounded-full [&_svg]:size-5 lg:mb-5 lg:size-13 lg:[&_svg]:size-6"
             aria-hidden="true"
             v-html="icons[item.icon]"
           ></span>
-          <h3 class="mb-[0.35rem] text-[1.05rem] min-[861px]:mb-2 min-[861px]:text-xl">
+          <h3 class="mb-1 text-base lg:mb-2 lg:text-xl">
             {{ item.title }}
           </h3>
-          <p
-            class="text-text-muted mb-[0.85rem] text-[0.9rem] min-[641px]:text-[0.85rem] min-[861px]:mb-5 min-[861px]:text-base"
-          >
+          <p class="text-text-muted mb-3 text-sm lg:mb-5 lg:text-base">
             {{ item.description }}
           </p>
-          <ul class="flex list-none flex-col gap-[0.4rem] min-[861px]:gap-2">
+          <ul class="flex list-none flex-col gap-2">
             <li
               v-for="detail in item.details"
               :key="detail"
-              class="text-text before:text-primary relative pl-4 text-[0.85rem] before:absolute before:left-0 before:font-bold before:content-['✓'] min-[641px]:text-[0.78rem] min-[861px]:pl-5 min-[861px]:text-[0.9rem]"
+              class="text-text before:text-primary relative pl-4 text-sm before:absolute before:left-0 before:font-bold before:content-['✓'] sm:text-xs lg:pl-5"
             >
               {{ detail }}
             </li>
