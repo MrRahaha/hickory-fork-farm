@@ -1,0 +1,219 @@
+<script setup lang="ts">
+interface ContactMethod {
+  icon: string
+  label: string
+  value: string
+  href: string
+}
+
+const methods: ContactMethod[] = [
+  {
+    icon: '📞',
+    label: 'Call or Text',
+    value: '(555) 867-5309',
+    href: 'tel:+15558675309',
+  },
+  {
+    icon: '✉️',
+    label: 'Email',
+    value: 'hello@thefarmonhickoryfork.com',
+    href: 'mailto:hello@thefarmonhickoryfork.com',
+  },
+  {
+    icon: '📍',
+    label: 'Farm Location',
+    value: '1245 Hickory Fork Road, Your Town, ST',
+    href: 'https://maps.google.com',
+  },
+]
+
+interface SocialLink {
+  label: string
+  href: string
+  background: string
+  path: string
+}
+
+const socialLinks: SocialLink[] = [
+  {
+    label: 'Facebook',
+    href: 'https://facebook.com',
+    background: '#0866ff',
+    path: 'M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z',
+  },
+  {
+    label: 'Instagram',
+    href: 'https://instagram.com',
+    background: 'linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5)',
+    path: 'M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077',
+  },
+  {
+    label: 'Nextdoor',
+    href: 'https://nextdoor.com',
+    background: '#8ed500',
+    path: 'M14.65 9.997a.069.069 0 0 0-.07.069v1.415c-.123-.177-.42-.37-.805-.37-.745 0-1.316.659-1.316 1.445 0 .787.571 1.447 1.316 1.447.386 0 .682-.194.806-.372v.221c0 .05.04.09.09.09h.607a.07.07 0 0 0 .07-.07v-3.806a.069.069 0 0 0-.07-.069zm-3.913.404a.07.07 0 0 0-.069.07c0 .779.064.7-.504.7a.09.09 0 0 0-.09.09v.486c0 .05.04.089.09.089h.504v1.136c0 .676.476 1.003 1.07 1.003.183 0 .32-.017.434-.046a.07.07 0 0 0 .052-.067v-.526a.07.07 0 0 0-.086-.066.984.984 0 0 1-.227.023c-.33 0-.476-.133-.476-.47v-.987h.608a.07.07 0 0 0 .07-.069v-.527a.069.069 0 0 0-.07-.069h-.608v-.701a.069.069 0 0 0-.069-.07zm-8.396.676c-.516 0-.955.236-1.201.598-.02.03-.055.095-.102.095-.226.002-.24-.276-.247-.524a.07.07 0 0 0-.069-.066l-.653-.004a.07.07 0 0 0-.069.07c.014.606.126 1.018.86 1.181.04.01.068.045.068.087v1.36c0 .037.03.068.069.068h.634a.07.07 0 0 0 .069-.07V12.47c0-.312.221-.667.64-.667.4 0 .642.355.642.667v1.404c0 .038.03.069.069.069h.634a.07.07 0 0 0 .069-.07v-1.508c0-.72-.616-1.287-1.413-1.287zm3.207.033c-.851 0-1.472.626-1.472 1.446 0 .876.65 1.431 1.483 1.447.655.012 1.09-.363 1.194-.494a.068.068 0 0 0-.015-.097l-.435-.34c-.047-.047-.084-.021-.112.001-.07.057-.203.22-.626.237-.37.015-.7-.205-.745-.576h2.03a.07.07 0 0 0 .069-.065c.006-.082.006-.142.006-.196 0-.897-.644-1.363-1.377-1.363zm11.652 0c-.812 0-1.472.637-1.472 1.446 0 .81.66 1.447 1.472 1.447.812 0 1.472-.638 1.472-1.447s-.66-1.446-1.472-1.446zm3.229 0c-.812 0-1.472.637-1.472 1.446 0 .81.66 1.447 1.472 1.447.812 0 1.472-.638 1.472-1.447s-.66-1.446-1.472-1.446zm3.314.028a.745.745 0 0 0-.695.476v-.374a.069.069 0 0 0-.069-.069h-.628a.069.069 0 0 0-.07.07v2.632a.07.07 0 0 0 .07.069h.628a.07.07 0 0 0 .07-.07v-1.255c0-.454.24-.737.604-.737.092 0 .175.013.26.035A.069.069 0 0 0 24 11.85v-.624a.07.07 0 0 0-.056-.068.938.938 0 0 0-.201-.02zm-16.666.033a.069.069 0 0 0-.058.108l.88 1.305L7 13.832a.07.07 0 0 0 .056.11h.745a.068.068 0 0 0 .056-.03l.564-.79.563.79a.069.069 0 0 0 .056.03h.74a.069.069 0 0 0 .057-.11l-.899-1.248.88-1.305a.069.069 0 0 0-.058-.108h-.738a.07.07 0 0 0-.058.03l-.548.818-.549-.817a.07.07 0 0 0-.057-.03zm-1.552.565c.286 0 .566.155.633.482h-1.31c.073-.338.392-.482.677-.482zm8.412.067c.42 0 .705.321.705.753 0 .433-.285.754-.705.754s-.705-.321-.705-.754c0-.432.285-.753.705-.753zm3.263.016c.403 0 .694.31.694.737s-.291.737-.694.737c-.403 0-.7-.31-.7-.737 0-.426.297-.737.7-.737zm3.229 0c.403 0 .694.31.694.737s-.291.737-.694.737c-.403 0-.7-.31-.7-.737 0-.426.297-.737.7-.737z',
+  },
+]
+</script>
+
+<template>
+  <section id="contact" class="section section--alt contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Contact</p>
+        <h2>Get in touch</h2>
+        <p>Reach out about eggs, meat, or lamb &mdash; we'd love to hear from you.</p>
+      </div>
+
+      <div class="contact__grid">
+        <a
+          v-for="method in methods"
+          :key="method.label"
+          :href="method.href"
+          class="contact-card"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="contact-card__icon" aria-hidden="true">{{ method.icon }}</span>
+          <span class="contact-card__label">{{ method.label }}</span>
+          <span class="contact-card__value">{{ method.value }}</span>
+        </a>
+      </div>
+
+      <div class="social">
+        <span class="social__label">Find us on</span>
+        <div class="social__links">
+          <a
+            v-for="social in socialLinks"
+            :key="social.label"
+            :href="social.href"
+            class="social-link"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="social-link__badge" :style="{ background: social.background }">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path :d="social.path" fill="#fff" />
+              </svg>
+            </span>
+            {{ social.label }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-card__icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.contact-card__label {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  font-size: 0.95rem;
+}
+
+.contact-card__value {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+.social__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.social__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.social-link__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.social-link__badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 860px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
