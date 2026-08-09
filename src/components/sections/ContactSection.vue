@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+import { Mail, MapPin, Phone } from '@lucide/vue'
 import SectionHeader from '@/components/SectionHeader.vue'
 import FacebookIcon from '@/components/icons/FacebookIcon.vue'
 import InstagramIcon from '@/components/icons/InstagramIcon.vue'
@@ -8,7 +9,7 @@ import ContactCard from './ContactCard.vue'
 import SocialLink from './SocialLink.vue'
 
 interface ContactMethod {
-  icon: string
+  icon: Component
   label: string
   value: string
   href: string
@@ -16,19 +17,19 @@ interface ContactMethod {
 
 const methods: ContactMethod[] = [
   {
-    icon: '📞',
+    icon: Phone,
     label: 'Call or Text',
     value: '(555) 867-5309',
     href: 'tel:+15558675309',
   },
   {
-    icon: '✉️',
+    icon: Mail,
     label: 'Email',
     value: 'hello@thefarmonhickoryfork.com',
     href: 'mailto:hello@thefarmonhickoryfork.com',
   },
   {
-    icon: '📍',
+    icon: MapPin,
     label: 'Farm Location',
     value: '1245 Hickory Fork Road, Your Town, ST',
     href: 'https://maps.google.com',

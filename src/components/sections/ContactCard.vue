@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
+
 defineProps<{
-  icon: string
+  icon: Component
   label: string
   value: string
   href: string
@@ -14,7 +16,7 @@ defineProps<{
     target="_blank"
     rel="noopener"
   >
-    <span class="mb-2 text-3xl" aria-hidden="true">{{ icon }}</span>
+    <component :is="icon" class="text-primary mb-2 size-8" aria-hidden="true" />
     <span class="text-primary-dark text-base font-bold">{{ label }}</span>
     <span class="text-text-muted text-sm">{{ value }}</span>
   </a>

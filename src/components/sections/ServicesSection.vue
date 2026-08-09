@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+import { Beef, Egg, Flower2 } from '@lucide/vue'
 import logoFull from '@/assets/logo-full.png'
 import SectionHeader from '@/components/SectionHeader.vue'
-import EggIcon from '@/components/icons/EggIcon.vue'
-import MeatIcon from '@/components/icons/MeatIcon.vue'
+import BreadIcon from '@/components/icons/BreadIcon.vue'
+import HoneyIcon from '@/components/icons/HoneyIcon.vue'
 import LambIcon from '@/components/icons/LambIcon.vue'
 import ProductCard from './ProductCard.vue'
 
@@ -16,7 +17,7 @@ interface Offering {
 
 const offerings: Offering[] = [
   {
-    icon: EggIcon,
+    icon: Egg,
     title: 'Fresh Eggs',
     description: 'Free-range eggs from a happy, pasture-raised flock, gathered daily.',
     details: [
@@ -26,7 +27,7 @@ const offerings: Offering[] = [
     ],
   },
   {
-    icon: MeatIcon,
+    icon: Beef,
     title: 'Pasture-Raised Meat',
     description: 'Chicken and pork raised slowly on open pasture, processed locally.',
     details: ['Whole and half orders', 'Seasonal availability', 'Ask about bulk pricing'],
@@ -36,6 +37,24 @@ const offerings: Offering[] = [
     title: 'Lamb',
     description: 'Grass-fed lamb raised in small batches for the best flavor and quality.',
     details: ['Whole, half, or cuts', 'Limited seasonal batches', 'Reserve ahead of harvest'],
+  },
+  {
+    icon: BreadIcon,
+    title: 'Bakery',
+    description: 'Sourdough, biscuits, and bread baked fresh in small batches.',
+    details: ['Baked weekly', 'Sourdough, biscuits & bread', 'Farm pickup or local delivery'],
+  },
+  {
+    icon: Flower2,
+    title: 'Flowers',
+    description: 'Cut flowers grown and gathered right here on the farm.',
+    details: ['Available in spring', 'Marigolds, daisies & more', 'Farm pickup or local delivery'],
+  },
+  {
+    icon: HoneyIcon,
+    title: 'Honey',
+    description: 'Raw, unfiltered honey from our own hives.',
+    details: ['Available seasonally', 'By the jar', 'Farm pickup or local delivery'],
   },
 ]
 </script>
